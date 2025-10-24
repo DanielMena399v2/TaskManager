@@ -16,25 +16,30 @@ def main():
 
         print_menu()
 
-        choice = input("Choose an option (1-5): ")
+        try:
 
-        match choice:
-            case "1":
-                description = input("Enter task description: ")
-                manager.add_task(description)
-            case "2":
-                manager.list_tasks()
-            case "3":
-                id = input("Enter task ID to complete: ")
-                manager.complete_task(id)
-            case "4":
-                id = input("Enter task ID to delete: ")
-                manager.delete_task(id)
-            case "5":
-                print("Exiting Task Manager. Goodbye!")
-                break
-            case _:
-                print("Invalid choice. Please select a valid option.")
+            choice = int(input("Choose an option (1-5): "))
+
+            match choice:
+                case 1:
+                    description = input("Enter task description: ")
+                    manager.add_task(description)
+                case 2:
+                    manager.list_tasks()
+                case 3:
+                    id = int(input("Enter task ID to complete: "))
+                    manager.complete_task(id)
+                case 4:
+                    id = int(input("Enter task ID to delete: "))
+                    manager.delete_task(id)
+                case 5:
+                    print("Exiting Task Manager. Goodbye!")
+                    break
+                case _:
+                    print("Invalid choice. Please select a valid option.")
+
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 5.")
 
 
 if __name__ == "__main__":
